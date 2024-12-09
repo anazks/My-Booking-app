@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView, Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Use 'react-native-vector-icons' if not using Expo
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons'; // Ensure @expo/vector-icons is installed or use 'react-native-vector-icons'
+import { Link } from 'expo-router';
 
 const UserLogin: React.FC = () => {
   // State variables for form fields
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [place, setPlace] = useState('');
 
   // Form submission handler
   const handleLogin = () => {
@@ -13,7 +25,6 @@ const UserLogin: React.FC = () => {
       Alert.alert('Error', 'Please fill in all fields.');
       return;
     }
-    // Replace this with real authentication logic
     Alert.alert('Success', `Welcome back, ${email}!`);
   };
 
@@ -23,12 +34,12 @@ const UserLogin: React.FC = () => {
   };
 
   return (
-    <KeyboardAvoidingView 
-      style={styles.container} 
+    <KeyboardAvoidingView
+      style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <View style={styles.loginContainer}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Registration</Text>
 
         {/* Email Input */}
         <TextInput
@@ -37,6 +48,25 @@ const UserLogin: React.FC = () => {
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
+          style={styles.input}
+        />
+
+        {/* Mobile Input */}
+        <TextInput
+          placeholder="Mobile"
+          placeholderTextColor="#aaa"
+          value={mobile}
+          onChangeText={setMobile}
+          keyboardType="phone-pad"
+          style={styles.input}
+        />
+
+        {/* Place Input */}
+        <TextInput
+          placeholder="Place"
+          placeholderTextColor="#aaa"
+          value={place}
+          onChangeText={setPlace}
           style={styles.input}
         />
 
@@ -61,12 +91,12 @@ const UserLogin: React.FC = () => {
           <Text style={styles.buttonText}>Login with Google</Text>
         </TouchableOpacity>
 
-        {/* Forgot Password and Sign Up Link */}
+        {/* Forgot Password and Sign Up Links */}
         <TouchableOpacity onPress={() => Alert.alert('Forgot Password', 'Password recovery process.')}>
           <Text style={styles.footerText}>Forgot Password?</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => Alert.alert('Sign Up', 'Redirect to registration screen.')}>
-          <Text style={styles.footerText}>Don't have an account? Sign Up</Text>
+          <Text style={styles.footerText}> <Link href="/Screens/user/userLogin">Already have an account?Sign in</Link> </Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -103,7 +133,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   button: {
-    backgroundColor: '#6200ea',
+    backgroundColor: 'golden',
     borderRadius: 10,
     paddingVertical: 12,
     width: '100%',
@@ -113,7 +143,7 @@ const styles = StyleSheet.create({
   },
   gmailButton: {
     flexDirection: 'row',
-    backgroundColor: '#db4437',  // Gmail red color
+    backgroundColor: '#db4437', // Gmail red color
     borderRadius: 10,
     paddingVertical: 12,
     width: '100%',
