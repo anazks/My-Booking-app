@@ -11,17 +11,25 @@ import Home from './Screens/user/Home';
 import Mybookings from './Screens/user/Mybookings';
 import BookNow from './Screens/user/BookNow';
 import Profile from './Screens/user/Profile';
-import OpenScreen from './Screens/user/OpenScree';
+import OpeningScreen from './Screens/user/OpeningScreen';
+import UserSelection from './Screens/user/UserSelection';
+import ShopHome from './Screens/shops/ShopHome';
+import ShopRegister from './Screens/shops/ShopRegister';
+import ShopLogin from './Screens/shops/ShopLogin';
 
 
 export default function App() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* <UserLogin /> */}
-      <Home/>
+      {/* <Home/> */}
       {/* <Mybookings/> */}
       {/* <BookNow/> */}
-      {/* <OpenScreen/> */}
+      {/* <OpeningScreen/> */}
+      {/* <UserSelection/> */}
+      <ShopHome/>
+      {/* <ShopRegister/> */}
+      {/* <ShopLogin/> */}
       {/* <Profile/> */}
       {/* <UserReg/> */}
     </SafeAreaView>
